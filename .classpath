@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_30"/>
+	<classpathentry kind="lib" path="lib/j3dcore.jar" sourcepath="D:/Program Files/Java/jdk1.6.0_18/src/j3d-1_5_2-src.zip"/>
+	<classpathentry kind="lib" path="lib/j3dutils.jar" sourcepath="D:/Program Files/Java/jdk1.6.0_18/src/j3d-1_5_2-src.zip"/>
+	<classpathentry kind="lib" path="lib/vecmath.jar" sourcepath="D:/Program Files/Java/jdk1.6.0_18/src/vecmath-1_5_2-src.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/basis"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/numeric"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/graf"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

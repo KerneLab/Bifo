@@ -1,0 +1,1 @@
+java -Xms32m -Xmx768m -jar bifo.jar

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Sealed: true
+Main-Class: org.kernelab.bifo.interact.Interact3Displayer
+Class-Path: ./lib/mysql-connector-java.jar
+   ./lib/org.kernelab.basis.jar ./lib/org.kernelab.numeric.jar
+   ./lib/j3dcore.jar ./lib/j3dutils.jar ./lib/vecmath.jar
+
