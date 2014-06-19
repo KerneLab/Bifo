@@ -12,7 +12,6 @@ import org.kernelab.numeric.matrix.Size;
  */
 public abstract class Aligner
 {
-
 	public static final int	DIRECTION_DIAGONAL	= 0;
 
 	public static final int	DIRECTION_UP		= 1;
@@ -27,13 +26,13 @@ public abstract class Aligner
 
 	}
 
-	protected CharSequence		a;
+	protected CharSequence			a;
 
-	protected CharSequence		b;
+	protected CharSequence			b;
 
-	private AlignMatrix<Double>	matrix;
+	protected AlignMatrix<Double>	matrix;
 
-	protected double			mark;
+	protected double				mark;
 
 	public Aligner(int capacity)
 	{
@@ -45,10 +44,18 @@ public abstract class Aligner
 	 */
 	public Aligner align(CharSequence a, CharSequence b)
 	{
-		this.a = a;
-		this.b = b;
+		if (a.length() < b.length())
+		{
+			this.a = a;
+			this.b = b;
+		}
+		else
+		{
+			this.a = b;
+			this.b = a;
+		}
 
-		Matrix.VerifyLimits(matrix, a.length() + 1, b.length() + 1);
+		Matrix.VerifyLimits(matrix, this.a.length() + 1, this.b.length() + 1);
 
 		this.init(matrix);
 
@@ -60,24 +67,22 @@ public abstract class Aligner
 
 		for (int row = 1; row < matrix.getRows(); row++)
 		{
-
 			for (int column = 1; column < matrix.getColumns(); column++)
 			{
-
 				for (int direction = 0; direction < scores.length; direction++)
 				{
 					switch (direction)
 					{
 						case Aligner.DIRECTION_DIAGONAL:
-							scores[direction] = this.score(matrix, row - 1, column - 1, a, b, direction);
+							scores[direction] = this.score(matrix, row - 1, column - 1, this.a, this.b, direction);
 							break;
 
 						case Aligner.DIRECTION_UP:
-							scores[direction] = this.score(matrix, row - 1, column, a, b, direction);
+							scores[direction] = this.score(matrix, row - 1, column, this.a, this.b, direction);
 							break;
 
 						case Aligner.DIRECTION_LEFT:
-							scores[direction] = this.score(matrix, row, column - 1, a, b, direction);
+							scores[direction] = this.score(matrix, row, column - 1, this.a, this.b, direction);
 							break;
 					}
 				}
@@ -87,7 +92,7 @@ public abstract class Aligner
 					score = scores[0];
 					former = matrix.getCell(row - 1, column - 1);
 				}
-				else if (scores[1] >= scores[2])
+				else if (scores[1] > scores[2])
 				{
 					score = scores[1];
 					former = matrix.getCell(row - 1, column);
@@ -279,5 +284,4 @@ public abstract class Aligner
 		}
 		return this.trace(matrix, a, b, alignment);
 	}
-
 }

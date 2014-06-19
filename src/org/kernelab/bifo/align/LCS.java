@@ -1,7 +1,5 @@
 package org.kernelab.bifo.align;
 
-import java.util.Scanner;
-
 import org.kernelab.basis.Tools;
 import org.kernelab.numeric.matrix.Position;
 
@@ -13,7 +11,6 @@ import org.kernelab.numeric.matrix.Position;
  */
 public class LCS extends Aligner
 {
-
 	/**
 	 * @param args
 	 */
@@ -21,17 +18,11 @@ public class LCS extends Aligner
 	{
 		LCS lcs = new LCS(10);
 
-		Scanner s = new Scanner(System.in);
+		String a = "LAR";
 
-		String a = s.nextLine();
-
-		String b = s.nextLine();
-
-		// lcs.setSequences(a, b);
+		String b = "LERA";
 
 		lcs.align(a, b);
-
-		// lcs.debugMatrix();
 
 		Tools.debug(lcs.trace().toString());
 	}
@@ -136,7 +127,7 @@ public class LCS extends Aligner
 				{
 					former = new Position(r, c);
 				}
-				else if (values[1] >= values[2])
+				else if (values[1] > values[2])
 				{
 					former = new Position(r, column);
 				}
