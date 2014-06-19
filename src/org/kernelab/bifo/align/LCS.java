@@ -11,6 +11,8 @@ import org.kernelab.numeric.matrix.Position;
  */
 public class LCS extends Aligner
 {
+	public static final char	GAP_HOLDER	= 0;
+
 	/**
 	 * @param args
 	 */
@@ -137,20 +139,20 @@ public class LCS extends Aligner
 				}
 			}
 
-			char s = Alignment.GAP_CHAR;
+			char s = GAP_HOLDER;
 			if (former.row != row)
 			{
 				s = a.charAt(former.row);
 			}
 
-			char t = Alignment.GAP_CHAR;
+			char t = GAP_HOLDER;
 			if (former.column != column)
 			{
 				t = b.charAt(former.column);
 			}
 
 			double match = -gapOpen;
-			if (s != Alignment.GAP_CHAR && t != Alignment.GAP_CHAR)
+			if (s != GAP_HOLDER && t != GAP_HOLDER)
 			{
 				match = this.match(s, t);
 			}

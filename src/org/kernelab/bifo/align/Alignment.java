@@ -25,8 +25,8 @@ public class Alignment
 
 	public void add(char a, char b, double match)
 	{
-		this.a.insert(0, a);
-		this.b.insert(0, b);
+		this.a.insert(0, a == LCS.GAP_HOLDER ? GAP_CHAR : a);
+		this.b.insert(0, b == LCS.GAP_HOLDER ? GAP_CHAR : b);
 
 		char r = RELATION_CHAR;
 		if (match > 0 && a == b)
